@@ -1,10 +1,13 @@
 'use client';
 
-import { Button, TextField, Typography } from "@mui/material";
+import { Alert, Button, TextField, Typography } from "@mui/material";
 import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const error = searchParams.get('error');
 
   async function login(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,6 +27,7 @@ export default function Home() {
   return (
     <div className="h-screen w-full bg-background flex items-center justify-center">
       <form onSubmit={login} className="bg-cards w-fit h-fit p-4 shadow-XXL flex flex-col justify-center items-center gap-2 rounded-md">
+        <Alert severity="error" >Erro ao fazer login</Alert>
         <Typography variant="h6" sx={{mb:4}}>Faça Login!</Typography>
         
         <TextField name="email" id="email" label="Digite seu email" variant="outlined" />
