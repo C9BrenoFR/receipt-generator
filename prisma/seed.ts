@@ -10,6 +10,8 @@ async function main() {
     name: "user",
     email: "user@test.com",
     password: hashedPassword,
+    address: "address example",
+    cpf: "111.111.111-11"
   };
 
   await prisma.user.create({
